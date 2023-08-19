@@ -1,0 +1,68 @@
+DAO / Repository (Data Access Object) and DTO (Data Transfer Object) are two design patterns used in software development, particularly in applications that involve working with data and
+databases. They serve different purposes and are used to manage data in distinct ways.
+
+DAO (Data Access Object):
+DAO is a design pattern that separates the business logic of an application from the underlying data storage and retrieval mechanisms. It provides an abstract interface
+to interact with a database or other data storage system. DAOs encapsulate the details of how data is accessed, allowing the rest of the application to work with a consistent
+API without needing to know the specifics of data retrieval.
+
+Key points about DAO:
+
+Abstraction: DAO provides an abstraction layer between the application logic and the data storage, isolating the application from the details of database operations.
+CRUD Operations: DAOs typically define methods for CRUD operations (Create, Read, Update, Delete) on entities in the database.
+Separation of Concerns: It helps separate concerns by isolating the data access code, making it easier to maintain and change.
+Security and Validation: DAOs can handle security checks, data validation, and other data-related concerns.
+
+
+
+In Java Spring, a repository is a key component of the Spring Data JPA framework. It's used to provide an abstraction
+over data access and manipulation operations for a specific domain entity. Repositories make it easier to interact with
+databases by offering a consistent and easy-to-use API for CRUD (Create, Read, Update, Delete) operations.
+
+The primary purpose of a repository in Spring is to bridge the gap between your application's business logic and the
+underlying data storage (usually a relational database). It abstracts away the complexities of writing raw SQL queries
+or database interaction code, providing a more intuitive way to perform database operations.
+
+Here's a breakdown of how a repository works in Spring:
+
+Defining an Entity:
+You define a domain entity class that represents a table in your database. This class usually corresponds to a row in
+the table.
+
+Creating a Repository Interface:
+You create an interface that extends the CrudRepository or one of its subinterfaces (such as JpaRepository or
+PagingAndSortingRepository). This interface should be parameterized with the entity type and the type of the entity's
+primary key.
+
+Methods in Repository:
+Spring Data JPA generates various CRUD methods based on the method names you declare in your repository interface. For
+example, if you have a User entity, Spring Data JPA will automatically generate methods like save, findById, findAll, delete, etc.
+
+Custom Query Methods:
+You can define custom query methods in your repository interface by using method name conventions. Spring Data JPA will
+automatically generate the query based on the method name, reducing the need to write complex SQL queries.
+
+Dependency Injection:
+Inject your repository interface into your service or controller classes using Spring's dependency injection mechanism.
+This allows you to call the repository's methods to interact with the database.
+
+Here's an example of defining a simple repository interface in Spring Data JPA:
+
+java
+Copy code
+import org.springframework.data.repository.CrudRepository;
+
+public interface UserRepository extends CrudRepository<User, Long> {
+    // Spring Data JPA generates methods like save, findById, findAll, delete
+    // You can also define custom query methods based on method name conventions
+    List<User> findByLastName(String lastName);
+}
+In this example, UserRepository extends the CrudRepository interface, which provides basic CRUD operations for the User
+ entity. Additionally, a custom query method findByLastName is defined, and Spring Data JPA will generate the corresponding query based on the method name.
+
+In summary, a repository in Java Spring, especially within Spring Data JPA, is a powerful tool for abstracting database
+interactions and providing a consistent way to perform data access operations for your application's domain entities.
+
+
+
+

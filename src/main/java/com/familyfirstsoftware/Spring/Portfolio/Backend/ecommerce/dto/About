@@ -1,0 +1,12 @@
+DTO (Data Transfer Object):
+DTO is a design pattern that focuses on transferring data between different parts of an application or between different layers (e.g., between the server and the client in a
+client-server architecture). DTOs are used to package and transport data, usually in a flattened, simplified, or structured format, without behavior or business logic.
+
+Key points about DTO:
+
+Data Exchange: DTOs are used to exchange data between different components or layers of an application, especially in distributed systems.
+Data Shape: DTOs often represent a subset or a combination of fields from one or more domain objects. They are designed to match the specific needs of a particular use case.
+Avoid Overfetching/Underfetching: DTOs help avoid situations where too much or too little data is fetched from the server, optimizing performance.
+Serialization: DTOs are often used for serialization and deserialization purposes, allowing data to be converted into formats suitable for network transmission or storage.
+In summary, while both DAO and DTO patterns deal with data, they serve different purposes. DAO focuses on abstracting data access operations and isolating data storage details
+from the application logic. DTO focuses on structuring and transferring data between different parts of an application or between layers, especially in distributed or client-server systems.
